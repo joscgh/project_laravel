@@ -10,11 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});*/
 
 Route::get('/', function () {
-    return view('project/index');
+    return view('welcome');
 });
+/*
+Route::get('/', function () {
+    return view('project/index');
+});*/
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin', 'AdminController@admin')    
+    ->middleware('is_admin')    
+    ->name('admin');
